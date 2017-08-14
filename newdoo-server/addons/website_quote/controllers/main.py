@@ -27,10 +27,10 @@ class sale_quote(http.Controller):
             if token != order.access_token:
                 return request.website.render('website.404')
             # Log only once a day
-            if request.session.get('view_quote',False)!=now:
-                request.session['view_quote'] = now
-                body=_('Quotation viewed by customer')
-                _message_post_helper(res_model='sale.order', res_id=order.id, message=body, token=token, token_field="access_token", message_type='notification')
+            #if request.session.get('view_quote',False)!=now:
+            #    request.session['view_quote'] = now
+            #    body=_('Quotation viewed by customer')
+            #    _message_post_helper(res_model='sale.order', res_id=order.id, message=body, token=token, token_field="access_token", message_type='notification')
         days = 0
         if order.validity_date:
             days = (datetime.datetime.strptime(order.validity_date, '%Y-%m-%d') - datetime.datetime.now()).days + 1
